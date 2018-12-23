@@ -20,12 +20,37 @@
         >Acepto los términos de uso</b-form-checkbox>
       </b-col>
     </b-row>
-    <b-row class="mt-3">
+    <b-row>
       <b-col>
-        <b-btn
+        <b-button
+          block
+          class="mt-3"
           type="submit"
           variant="primary"
-        >Submit</b-btn>
+        >Enviar</b-button>
+      </b-col>
+      <b-col>
+        <b-button
+          @click="clearErrors"
+          block
+          class="mt-3 text-white"
+          variant="warning"
+        >Limpiar errores</b-button>
+      </b-col>
+      <b-col>
+        <b-button
+          @click="clearForm"
+          block
+          class="mt-3 text-white"
+          variant="info"
+        >Limpiar formulario</b-button>
+      </b-col>
+      <b-col>
+        <b-button
+          @click="clearFormAndErrors"
+          block
+          class="mt-3 text-white"
+        >Limpiar formulario y errores</b-button>
       </b-col>
     </b-row>
   </b-form>
@@ -97,6 +122,17 @@ export default {
         return false;
       }
       alert("formulario ok");
+    },
+    clearForm() {
+      Object.assign(this.$data, this.$options.data.apply(this));
+    },
+    clearErrors() {
+      this.reset = true;
+      this.$validator.reset();
+    },
+    clearFormAndErrors() {
+      this.clearForm();
+      this.clearErrors();
     }
   }
 };
