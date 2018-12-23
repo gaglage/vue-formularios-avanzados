@@ -1,4 +1,37 @@
 {
-    "todos": [],
-    "activities_subscriptions": []
+  "todos": [],
+  "activities_subscriptions": [
+    {
+      "terms": true,
+      "personal_data": {
+        "name": "asssssssss",
+        "surname": "sssssssss"
+      },
+      "activity_type_selection": {
+        "type": 2,
+        "date": "2018-12-13"
+      },
+      "activity_selected_data": {
+        "team": "asas",
+        "information": "asasassssss"
+      },
+      "id": 100
+    },
+    {
+      "terms": true,
+      "personal_data": {
+        "name": "Gabi",
+        "surname": "wwww"
+      },
+      "activity_type_selection": {
+        "type": 3,
+        "date": "2018-12-01"
+      },
+      "activity_selected_data": {
+        "team": "wwwww",
+        "information": ""
+      },
+      "id": 1
+    }
+  ]
 }

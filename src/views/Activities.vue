@@ -94,6 +94,14 @@ export default {
       }
     };
   },
+  async mounted(){
+    const {data} = await this.axios({
+      method: 'GET',
+      url:'/activities_subscriptions/1'
+    })
+    console.log({data});
+    this.activity = data;
+  },
   computed: {
     activityComponent() {
       switch (this.activity.activity_type_selection.type) {
@@ -114,14 +122,26 @@ export default {
   methods: {
     async submitActivity() {
       this.reset = false;
-      if (!this.activity.terms) {
-        return false;
-      }
+
       const validate = await this.$validator.validateAll();
       if (!validate) {
         return false;
       }
-      alert("formulario ok");
+
+      if (!this.activity.terms) {
+        return false;
+      }
+
+      try {
+        await this.axios({
+          method: "POST",
+          url: "/activities_subscriptions",
+          data: this.activity
+        });
+        this.clearFormAndErrors();
+      } catch (e) {
+        console.log(e);
+      }
     },
     clearForm() {
       Object.assign(this.$data, this.$options.data.apply(this));
